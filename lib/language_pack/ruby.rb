@@ -413,6 +413,7 @@ WARNING
   # runs bundler to install the dependencies
   def build_bundler
     #install unix odbc
+    run("apt-get update")
     run("apt-get install unixodbc-dev")
     log("bundle") do
       bundle_without = ENV["BUNDLE_WITHOUT"] || "development:test"

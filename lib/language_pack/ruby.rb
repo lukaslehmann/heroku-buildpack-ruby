@@ -65,20 +65,6 @@ class LanguagePack::Ruby < LanguagePack::Base
   end
 
   def compile
-    #install unix odbc
-    topic "Installing unix odbc"
-    #run_stdout("echo TEST")
-    system("cd /usr/local")
-    system("echo $(ls)")
-    system("echo $(wget https://s3-us-west-1.amazonaws.com/bitchplease/unixodbc/unixODBC-2.3.2.tar.gz)")
-    system("echo $(ls)")
-    system("tar zxvf unixODBC-2.3.2.tar.gz")
-    system("cd unixODBC-2.3.2")
-    system("./configure")
-    system("make")
-    system("make install")
-    system("echo done")
-
     staging_environment_path # Save current environment path first
     Dir.chdir(build_path)
     remove_vendor_bundle

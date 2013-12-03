@@ -66,9 +66,7 @@ class LanguagePack::Ruby < LanguagePack::Base
 
   def compile
     #install unix odbc
-      warn(<<WARNING)
-Das isch en test
-WARNING
+    run("echo test")
 
     staging_environment_path # Save current environment path first
     Dir.chdir(build_path)

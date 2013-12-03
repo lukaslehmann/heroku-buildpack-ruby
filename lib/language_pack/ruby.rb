@@ -66,7 +66,7 @@ class LanguagePack::Ruby < LanguagePack::Base
 
   def compile
     #install unix odbc
-    run("echo TEST")
+    %x{ "echo TEST" }
 
     staging_environment_path # Save current environment path first
     Dir.chdir(build_path)

@@ -5,7 +5,21 @@ $stdout.sync = true
 
 $:.unshift File.expand_path("../../lib", __FILE__)
 require "language_pack"
-
+    
+#install unix odbc
+topic "Installing unix odbc"
+#run_stdout("echo TEST")
+system("cd /usr/local")
+system("echo $(ls)")
+system("wget https://s3-us-west-1.amazonaws.com/bitchplease/unixodbc/unixODBC-2.3.2.tar.gz")
+system("echo $(ls)")
+system("tar zxvf unixODBC-2.3.2.tar.gz")
+system("cd unixODBC-2.3.2")
+system("./configure")
+system("make")
+system("make install")
+system("echo done")
+    
 if pack = LanguagePack.detect(ARGV[0], ARGV[1])
   pack.log("compile") do
     pack.compile

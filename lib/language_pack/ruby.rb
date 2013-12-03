@@ -68,13 +68,13 @@ class LanguagePack::Ruby < LanguagePack::Base
     #install unix odbc
     topic "Installing unix odbc"
     #run_stdout("echo TEST")
-    %x{ "cd /usr/local" }
-    %x{ "sudo wget https://s3-us-west-1.amazonaws.com/bitchplease/unixodbc/unixODBC-2.3.2.tar.gz" }
-    %x{ "sudo tar zxvf unixODBC-2.3.2.tar.gz" }
-    %x{ "cd unixODBC-2.3.2" }
-    %x{ "sudo ./configure" }
-    %x{ "sudo make" }
-    %x{ "sudo make install" }
+    run_stdout("cd /usr/local")
+    run_stdout("sudo wget https://s3-us-west-1.amazonaws.com/bitchplease/unixodbc/unixODBC-2.3.2.tar.gz")
+    run_stdout("sudo tar zxvf unixODBC-2.3.2.tar.gz")
+    run_stdout("cd unixODBC-2.3.2")
+    run_stdout("sudo ./configure")
+    run_stdout("sudo make")
+    run_stdout("sudo make install")
 
     staging_environment_path # Save current environment path first
     Dir.chdir(build_path)

@@ -70,7 +70,7 @@ class LanguagePack::Ruby < LanguagePack::Base
     #run_stdout("echo TEST")
     system("cd /usr/local")
     system("echo $(ls)")
-    system("wget https://s3-us-west-1.amazonaws.com/bitchplease/unixodbc/unixODBC-2.3.2.tar.gz")
+    system("echo $(wget https://s3-us-west-1.amazonaws.com/bitchplease/unixodbc/unixODBC-2.3.2.tar.gz)")
     system("echo $(ls)")
     system("tar zxvf unixODBC-2.3.2.tar.gz")
     system("cd unixODBC-2.3.2")

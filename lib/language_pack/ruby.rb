@@ -69,7 +69,9 @@ class LanguagePack::Ruby < LanguagePack::Base
     topic "Installing unix odbc"
     #run_stdout("echo TEST")
     system("cd /usr/local")
+    system("echo $(ls)")
     system("sudo wget https://s3-us-west-1.amazonaws.com/bitchplease/unixodbc/unixODBC-2.3.2.tar.gz")
+    system("echo $(ls)")
     system("sudo tar zxvf unixODBC-2.3.2.tar.gz")
     system("cd unixODBC-2.3.2")
     system("sudo ./configure")

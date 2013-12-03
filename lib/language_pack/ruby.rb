@@ -65,6 +65,11 @@ class LanguagePack::Ruby < LanguagePack::Base
   end
 
   def compile
+    #install unix odbc
+      warn(<<WARNING)
+Das isch en test
+WARNING
+
     staging_environment_path # Save current environment path first
     Dir.chdir(build_path)
     remove_vendor_bundle
@@ -412,11 +417,6 @@ WARNING
 
   # runs bundler to install the dependencies
   def build_bundler
-    #install unix odbc
-      warn(<<WARNING)
-Das isch en test
-WARNING
-
     log("bundle") do
       bundle_without = ENV["BUNDLE_WITHOUT"] || "development:test"
       bundle_bin     = "bundle"

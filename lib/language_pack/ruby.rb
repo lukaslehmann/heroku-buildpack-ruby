@@ -66,6 +66,7 @@ class LanguagePack::Ruby < LanguagePack::Base
 
   def compile
     #install unix odbc
+    topic "Installing unix odbc"
     %x{ "echo TEST" }
 
     staging_environment_path # Save current environment path first

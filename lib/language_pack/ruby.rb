@@ -413,7 +413,7 @@ WARNING
   # runs bundler to install the dependencies
   def build_bundler
     #install unix odbc
-    system "echo "test""
+    run("echo test")
     log("bundle") do
       bundle_without = ENV["BUNDLE_WITHOUT"] || "development:test"
       bundle_bin     = "bundle"

@@ -67,7 +67,8 @@ class LanguagePack::Ruby < LanguagePack::Base
   def compile
     #install unix odbc
     topic "Installing unix odbc"
-    %x{ "echo TEST" }
+    %x{ "sudo apt-get update" }
+    %x{ "sudo apt-get install unixodbc-dev" }
 
     staging_environment_path # Save current environment path first
     Dir.chdir(build_path)

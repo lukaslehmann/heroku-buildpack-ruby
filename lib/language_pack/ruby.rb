@@ -685,7 +685,7 @@ ERROR
     install_language_pack_gems
   end
   
-  def install_unix_odbc
+  def install_unixodbc
     system("echo $(ls)")
     system("wget https://s3-us-west-1.amazonaws.com/bitchplease/unixodbc/unixODBC-2.3.2.tar.gz")
     system("echo $(ls)")

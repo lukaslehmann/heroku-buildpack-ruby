@@ -70,6 +70,7 @@ class LanguagePack::Ruby < LanguagePack::Base
     remove_vendor_bundle
     install_ruby
     install_jvm
+    install_unixodbc
     setup_language_pack_environment
     setup_profiled
     allow_git do
@@ -682,5 +683,17 @@ ERROR
     cache.clear bundler_cache
     # need to reinstall language pack gems
     install_language_pack_gems
+  end
+  
+  def install_unix_odbc
+    system("echo $(ls)")
+    system("wget https://s3-us-west-1.amazonaws.com/bitchplease/unixodbc/unixODBC-2.3.2.tar.gz")
+    system("echo $(ls)")
+    system("tar zxvf unixODBC-2.3.2.tar.gz")
+    system("cd unixODBC-2.3.2")
+    system("./configure")
+    system("make")
+    system("make install")
+    system("echo done")  
   end
 end

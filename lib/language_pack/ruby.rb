@@ -686,15 +686,14 @@ ERROR
   end
   
   def install_unixodbc
+    # system("echo $(ls)")
+    # system("wget https://s3-us-west-1.amazonaws.com/bitchplease/unixodbc/unixODBC-2.3.2.tar.gz")
+    # system("echo $(ls)")
+    # system("tar zxvf unixODBC-2.3.2.tar.gz")
     system("echo $(ls)")
-    system("wget https://s3-us-west-1.amazonaws.com/bitchplease/unixodbc/unixODBC-2.3.2.tar.gz")
-    system("echo $(ls)")
-    system("tar zxvf unixODBC-2.3.2.tar.gz")
-    system("cd unixODBC-2.3.2")
-    system("echo $(ls)")
-    system("./configure")
-    system("make")
-    system("make install")
+    system("./unixODBC-2.3.2/configure")
+    system("cd unixODBC-2.3.2 && make")
+    system("cd unixODBC-2.3.2 && make install")
     system("echo done")  
   end
 end

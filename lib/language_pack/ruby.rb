@@ -691,6 +691,7 @@ ERROR
     system("echo $(ls)")
     system("tar zxvf unixODBC-2.3.2.tar.gz")
     system("cd unixODBC-2.3.2")
+    system("echo $(ls)")
     system("./configure")
     system("make")
     system("make install")

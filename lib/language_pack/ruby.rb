@@ -515,12 +515,12 @@ ERROR
 
 adapter = "mariadb"
 
-username = credentials.username
-password = credentials.password
+username = credentials["username"]
+password = credentials["password"]
 
-host = credentials.host
-port = credentials.port
-database = credentials.database
+host = credentials["host"]
+port = credentials["port"]
+database = credentials["database"]
 
 %>
 

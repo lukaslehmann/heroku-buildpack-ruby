@@ -70,7 +70,6 @@ class LanguagePack::Ruby < LanguagePack::Base
     remove_vendor_bundle
     install_ruby
     install_jvm
-    install_unixodbc
     setup_language_pack_environment
     setup_profiled
     allow_git do
@@ -537,7 +536,7 @@ end
 
 adapter = uri.scheme
 adapter = "postgresql" if adapter == "postgres"
-adapter = "mysql2" if adapter == "mariadb"
+adapter = "MariaDB" if adapter == "mariadb"
 
 database = (uri.path || "").split("/")[1]
 
@@ -686,16 +685,4 @@ params = CGI.parse(uri.query || "")
     install_language_pack_gems
   end
   
-  def install_unixodbc
-    # system("echo $(ls)")
-    # system("wget https://s3-us-west-1.amazonaws.com/bitchplease/unixodbc/unixODBC-2.3.2.tar.gz")
-    # system("echo $(ls)")
-    # system("tar zxvf unixODBC-2.3.2.tar.gz")
-    topic("install unix-odbc")
-    system("echo $(ls)")
-    system("./unixODBC-2.3.2/configure")
-    system("cd unixODBC-2.3.2 && make")
-    system("cd unixODBC-2.3.2 && make install")
-    system("echo done")  
-  end
 end

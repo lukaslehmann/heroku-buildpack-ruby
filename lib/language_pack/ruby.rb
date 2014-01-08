@@ -536,7 +536,7 @@ ERROR
 #   <%= key %>: <%= value.first %>
 # <% end %>
 #         DATABASE_YML
-      end
+      # end
     end
   end
 

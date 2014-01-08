@@ -509,44 +509,18 @@ ERROR
         file.puts <<-DATABASE_YML
 <%
 
-require 'cgi'
-require 'uri'
+#parse vcap_services json
+  database = JSON.parse(ENV['VCAP_SERVICES'])["mariadb"]
+  credentials = database.first["credentials"]
 
-begin
-  uri = URI.parse(ENV["DATABASE_URL"])
-rescue URI::InvalidURIError
-  raise "Invalid DATABASE_URL"
-end
+adapter = "mariadb"
 
-raise "No RACK_ENV or RAILS_ENV found" unless ENV["RAILS_ENV"] || ENV["RACK_ENV"]
+username = credentials.username
+password = credentials.password
 
-def attribute(name, value, force_string = false)
-  if value
-    value_string =
-      if force_string
-        '"' + value + '"'
-      else
-        value
-      end
-    "\#{name}: \#{value_string}"
-  else
-    ""
-  end
-end
-
-adapter = uri.scheme
-adapter = "postgresql" if adapter == "postgres"
-adapter = "mysql2" if adapter == "MariaDB"
-
-database = (uri.path || "").split("/")[1]
-
-username = uri.user
-password = uri.password
-
-host = uri.host
-port = uri.port
-
-params = CGI.parse(uri.query || "")
+host = credentials.host
+port = credentials.port
+database = credentials.database
 
 %>
 
@@ -554,7 +528,7 @@ params = CGI.parse(uri.query || "")
   <%= attribute "adapter",  adapter %>
   <%= attribute "database", database %>
   <%= attribute "username", username %>
-  <%= attribute "password", password, true %>
+  <%= attribute "password", password %>
   <%= attribute "host",     host %>
   <%= attribute "port",     port %>
 

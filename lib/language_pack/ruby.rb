@@ -503,39 +503,39 @@ ERROR
   # writes ERB based database.yml for Rails. The database.yml uses the DATABASE_URL from the environment during runtime.
   def create_database_yml
     log("do_not_replace_database_yml") do
-      return unless File.directory?("config")
-      topic("Writing config/database.yml to read from DATABASE_URL")
-      File.open("config/database.yml", "w") do |file|
-        file.puts <<-DATABASE_YML
-<%
+      # return unless File.directory?("config")
+      # topic("Writing config/database.yml to read from DATABASE_URL")
+#       File.open("config/database.yml", "w") do |file|
+#         file.puts <<-DATABASE_YML
+# <%
 
-#parse vcap_services json
-  database = JSON.parse(ENV['VCAP_SERVICES'])["mariadb"]
-  credentials = database.first["credentials"]
+# #parse vcap_services json
+#   database = JSON.parse(ENV['VCAP_SERVICES'])["mariadb"]
+#   credentials = database.first["credentials"]
 
-adapter = "mariadb"
+# adapter = "mariadb"
 
-username = credentials["username"]
-password = credentials["password"]
+# username = credentials["username"]
+# password = credentials["password"]
 
-host = credentials["host"]
-port = credentials["port"]
-database = credentials["database"]
+# host = credentials["host"]
+# port = credentials["port"]
+# database = credentials["database"]
 
-%>
+# %>
 
-<%= ENV["RAILS_ENV"] || ENV["RACK_ENV"] %>:
-  <%= attribute "adapter",  adapter %>
-  <%= attribute "database", database %>
-  <%= attribute "username", username %>
-  <%= attribute "password", password %>
-  <%= attribute "host",     host %>
-  <%= attribute "port",     port %>
+# <%= ENV["RAILS_ENV"] || ENV["RACK_ENV"] %>:
+#   <%= attribute "adapter",  adapter %>
+#   <%= attribute "database", database %>
+#   <%= attribute "username", username %>
+#   <%= attribute "password", password %>
+#   <%= attribute "host",     host %>
+#   <%= attribute "port",     port %>
 
-<% params.each do |key, value| %>
-  <%= key %>: <%= value.first %>
-<% end %>
-        DATABASE_YML
+# <% params.each do |key, value| %>
+#   <%= key %>: <%= value.first %>
+# <% end %>
+#         DATABASE_YML
       end
     end
   end

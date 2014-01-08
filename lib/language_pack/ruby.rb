@@ -536,7 +536,7 @@ end
 
 adapter = uri.scheme
 adapter = "postgresql" if adapter == "postgres"
-adapter = "MariaDB" if adapter == "mariadb"
+adapter = "mysql2" if adapter == "MariaDB"
 
 database = (uri.path || "").split("/")[1]
 
